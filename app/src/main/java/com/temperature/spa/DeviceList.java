@@ -1,4 +1,4 @@
-package com.temperature.blue;
+package com.temperature.spa;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;

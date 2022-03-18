@@ -1,10 +1,9 @@
-package com.temperature.blue;
+package com.temperature.spa;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,7 +32,9 @@ public class SplashScreen extends Activity {
         setContentView(R.layout.splash);
         // HERE WE ARE TAKING THE REFERENCE OF OUR IMAGE
         // SO THAT WE CAN PERFORM ANIMATION USING THAT IMAGE
+        //TextView backgroundImage= (TextView) findViewById(R.id.textView3);
         ImageView backgroundImage= (ImageView) findViewById(R.id.imageLogo);
+
         Animation slideAnimation = AnimationUtils.loadAnimation(this, R.anim.side_slide);
         backgroundImage.startAnimation(slideAnimation);
         Thread timerThread = new Thread(){

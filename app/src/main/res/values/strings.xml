@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Steam</string>
+    <string name="app_name">SPA</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -9,5 +9,5 @@
     <string name="ten_degree">25&#8451;</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">SYA <br/> Electronics</string>
+    <string name="dummy_content">SPA</string>
 </resources>

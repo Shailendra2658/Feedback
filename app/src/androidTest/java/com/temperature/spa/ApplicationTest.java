@@ -1,4 +1,4 @@
-package com.temperature.blue;
+package com.temperature.spa;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

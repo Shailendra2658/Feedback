@@ -1,4 +1,6 @@
-package com.temperature.blue;
+package com.temperature.spa;
+
+import static com.temperature.spa.SplashScreen.getCounter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,18 +23,15 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.google.android.material.imageview.ShapeableImageView;
-import com.temperature.blue.databinding.ActivityLedControlBinding;
+import com.temperature.spa.databinding.ActivityLedControlBinding;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.UUID;
-
-import androidx.databinding.DataBindingUtil;
-
-import static com.temperature.blue.SplashScreen.getCounter;
 
 
 public class temperatureControl extends Activity {
@@ -40,6 +39,8 @@ public class temperatureControl extends Activity {
     private static final String TAG = "temperatureControl";
     // Button btnOn, btnOff, btnDis;
     Button On, Off, Discnt, Abt;
+    Button one, two, three, four;
+
     String address = null;
     private ProgressDialog progress;
     BluetoothAdapter myBluetooth = null;
@@ -83,10 +84,17 @@ public class temperatureControl extends Activity {
         statusMsg = (TextView) findViewById(R.id.textView2);
         imageLogout = (ShapeableImageView) findViewById(R.id.imageLogout);
 
+        one = (Button) findViewById(R.id.btnOne);
+        two = (Button) findViewById(R.id.btnTwo);
+        three = (Button) findViewById(R.id.btnThree);
+
         new ConnectBT().execute(); //Call the class to connect
 
         if (getCounter(temperatureControl.this) > 20)
             finish();
+
+
+        buttonsClicks();
 
         //commands to be sent to bluetooth
         binding.switchLight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -170,6 +178,101 @@ public class temperatureControl extends Activity {
 
     }
 
+    private void buttonsClicks() {
+        binding.btnOne.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 1 : 11);      //method to turn on
+                binding.btnOne.setText(isChecked ? "One ON" : "One OFF");
+                binding.btnOne.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnTwo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 2 : 22);      //method to turn on
+                binding.btnTwo.setText(isChecked ? "Two ON" : "Two OFF");
+                binding.btnTwo.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnThree.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 3 : 33);      //method to turn on
+                binding.btnThree.setText(isChecked ? "Three ON" : "Three OFF");
+                binding.btnThree.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnFour.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 4 : 44);      //method to turn on
+                binding.btnFour.setText(isChecked ? "Four ON" : "Four OFF");
+                binding.btnFour.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnFive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 5 : 55);      //method to turn on
+                binding.btnFive.setText(isChecked ? "Five ON" : "Five OFF");
+                binding.btnFive.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnSix.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 6 : 66);      //method to turn on
+                binding.btnSix.setText(isChecked ? "Six ON" : "Six OFF");
+                binding.btnSix.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnSeven.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 7 : 77);      //method to turn on
+                binding.btnSeven.setText(isChecked ? "Seven ON" : "Seven OFF");
+                binding.btnSeven.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnEight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 8 : 88);      //method to turn on
+                binding.btnEight.setText(isChecked ? "Eight ON" : "Eight OFF");
+                binding.btnEight.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+        binding.btnNine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 9 : 99);      //method to turn on
+                binding.btnNine.setText(isChecked ? "Nine ON" : "Nine OFF");
+                binding.btnNine.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+
+
+        binding.btnTen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                turnOffLed(isChecked ? 0 : 00);      //method to turn on
+                binding.btnTen.setText(isChecked ? "Ten ON" : "Ten OFF");
+                binding.btnTen.setBackground(isChecked?
+                        getDrawable(R.color.active_green):
+                        getDrawable(R.color.color_inactive_auto_topup));
+            }
+        });
+    }
+
     private void Disconnect() {
         if (btSocket != null) //If the btSocket is busy
         {
@@ -193,46 +296,11 @@ public class temperatureControl extends Activity {
         }
     }
 
-    private void turnOnLed(int i) {
-        if (btSocket != null) {
-            try {
-                /*for (byte b : "Hello".toString().getBytes()) {
-                    btSocket.getOutputStream().write(b);
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        msg("Error sleep "+e);
 
-                    }
-                }*/
-                // btSocket.getOutputStream().write(0XA);
-                if (i == 0)
-                    btSocket.getOutputStream().write(HexCommandtoByte(String.valueOf(i).getBytes()));
-                else
-                    btSocket.getOutputStream().write(String.valueOf(i).getBytes());
-                //char[] chars = Hex.encodeHex(String.valueOf(i).getBytes(StandardCharsets.UTF_8));
-
-//                else
-//                    btSocket.getOutputStream().write("31".toString().getBytes());
-
-                statusMsg.setText("Bluetooth Waiting...");
-            } catch (IOException e) {
-                msg("Error");
-            }
-        }
-    }
 
     // fast way to call Toast
     private void msg(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-    }
-
-    public void about(View v) {
-       /* if(v.getId() == R.id.abt)
-        {
-            Intent i = new Intent(this, AboutActivity.class);
-            startActivity(i);
-        }*/
     }
 
     @Override
@@ -522,54 +590,6 @@ public class temperatureControl extends Activity {
 
         return data;
 
-    }
-
-    void beginListenForData() {
-        final Handler handler = new Handler();
-        final byte delimiter = 10; //This is the ASCII code for a newline character
-
-        stopWorker = false;
-        readBufferPosition = 0;
-        readBuffer = new byte[1024];
-        workerThread = new Thread(new Runnable() {
-            public void run() {
-                while (!Thread.currentThread().isInterrupted() && !stopWorker) {
-                    try {
-                        int bytesAvailable = mmInputStream.available();
-                        if (bytesAvailable > 0) {
-                            byte[] packetBytes = new byte[bytesAvailable];
-                            mmInputStream.read(packetBytes);
-                            for (int i = 0; i < bytesAvailable; i++) {
-                                byte b = packetBytes[i];
-                                if (b == delimiter) {
-                                    byte[] encodedBytes = new byte[readBufferPosition];
-                                    System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
-                                    final String data = new String(encodedBytes, "US-ASCII");
-                                    readBufferPosition = 0;
-
-                                    handler.post(new Runnable() {
-                                        public void run() {
-                                            statusMsg.setText(data);
-                                        }
-                                    });
-                                } else {
-                                    readBuffer[readBufferPosition++] = b;
-                                }
-                            }
-                        }
-                    } catch (final IOException ex) {
-                        stopWorker = true;
-                        handler.post(new Runnable() {
-                            public void run() {
-                                statusMsg.setText(ex.getMessage());
-                            }
-                        });
-                    }
-                }
-            }
-        });
-
-        workerThread.start();
     }
 
 }
